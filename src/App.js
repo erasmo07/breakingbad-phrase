@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 import Phrase from './components/Phrase';
+import { useEffect } from 'react';
 
 const ButtonStyled = styled.button`
   background: -webkit-linear-gradient(top left, #007d35 0%, #007d35 40%, #0f574e 100%);
@@ -12,6 +13,11 @@ const ButtonStyled = styled.button`
   padding: 1rem 3rem;
   font-size: 2rem;
   border: 2px solid black;
+  transition: background-size .8s ease;
+  :hover {
+    cursor:pointer;
+    background-size: 400px;
+  }
 `;
 
 const Container = styled.div`
@@ -30,6 +36,10 @@ function App() {
     const response = await api.json();
     setPhrase(response[0]);
   }
+
+  useEffect(() => {
+    handleClick()
+  }, [])
 
   return (
     <Container>
